@@ -1,0 +1,16 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+span {
+    color: white;
+}
+
+.cases-types {
+    border-radius: 14px;
+    height:15vh;
+}
+
+.graph {
+    height: 30vh;
+}

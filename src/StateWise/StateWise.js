@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import StateWiseContainer from './StateWiseContainer'
+import Loader from '../Loader'
 
 export default function StateWise() {
 	const [ type, setType ] = useState(0)
 	const [ data, setData ] = useState([])
+	const [ ready, setReady ] = useState(false)
 	const colors = [
 		{ backgroundColor: '#6610f244', color: '#6610f2' },
 		{ backgroundColor: '#007bff44', color: '#007bff' },
@@ -31,10 +33,14 @@ export default function StateWise() {
 						data[i].push({state: stateid, [types[i]]: current[i]})
 			}
 			setData(data)
+			setReady(true)
 		})
-		document.title = 'StateWise Covid-19 Tracker';
+		document.title = 'StateWise Data';
 	}, [])
-	return (
-		<StateWiseContainer colors={colors} type={type} data={data[type]} setType={setType} />
-	)
+	if(ready)
+		return(
+			<StateWiseContainer colors={colors} type={type} data={data[type]} setType={setType} />
+		)
+	else
+		return(<Loader />)
 }

@@ -1,5 +1,5 @@
-input[type="radio"] {
-    visibility: hidden;
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .cases-type {
