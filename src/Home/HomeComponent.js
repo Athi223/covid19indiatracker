@@ -8,10 +8,12 @@ export default function HomeComponent(props) {
 		<div className="container-fluid">
 			<div className="row text-center">
 				<div className="col-12 col-md-6 col-lg-2 col-xl-2">
-					<span className="mx-2 my-4 bg-info cases-types h2 p-4 d-flex align-items-center">Covid-19 India Tracker</span>
+					<div className="mx-2 my-4 bg-info cases-types h2 p-4 d-flex align-items-center">
+						<span>Covid-19 India Tracker</span>
+					</div>
 				</div>
 				<div className="col-12 col-md-6 col-lg-2 col-xl-2">
-					<div className="mx-2 my-4 bg-warning cases-types h3 p-4 d-flex flex-column justify-content-around">
+					<div className="mx-2 my-4 cases-types h3 p-4 d-flex flex-column justify-content-around" style ={{ backgroundColor: '#fd7e14' }}>
 						<span>Confirmed</span>
 						<span>{new Intl.NumberFormat('en-IN').format(props.confirmed[props.confirmed.length-1].confirmed)}</span>
 					</div>
@@ -35,7 +37,7 @@ export default function HomeComponent(props) {
 					</div>
 				</div>
 				<div className="col-12 col-md-6 col-lg-2 col-xl-2">
-					<div className="mx-2 my-4 bg-secondary cases-types h3 p-4 d-flex flex-column justify-content-around">
+					<div className="mx-2 my-4 cases-types h3 p-4 d-flex flex-column justify-content-around" style ={{ backgroundColor: '#6610f2' }}>
 						<span>Tested</span>
 						<span>{props.tested}</span>
 					</div>
@@ -43,7 +45,7 @@ export default function HomeComponent(props) {
 			</div>
 			<div className="row text-center">
 				<div className="col-12 col-md-12 col-lg-6 col-xl-6">
-					<h4 className="text-warning">Confirmed</h4>
+					<h4 style={{ color: '#fd7e14' }}>Confirmed</h4>
 					<div className="m-2 graph">
 						<ResponsiveContainer>
 						<LineChart data={props.confirmed} margin={{ left: 20 }}>
@@ -51,7 +53,7 @@ export default function HomeComponent(props) {
 							<XAxis dataKey="date" />
 							<YAxis scale="log" domain={[1, 10000000]} />
 							<Tooltip />
-							<Line type="monotone" dataKey="confirmed" stroke="#ffc107" />
+							<Line type="monotone" dataKey="confirmed" stroke="#fd7e14" />
 						</LineChart>
 						</ResponsiveContainer>
 					</div>

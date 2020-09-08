@@ -41,6 +41,7 @@ export default function StateWiseContainer(props) {
 		'LA': 'Ladakh',
 		'PY': 'Puducherry' 
 	}
+	console.log(props.data[0])
     return(
         <div style={{ height: "85vh", width:"100vw" }}>
 			<div className="container p-2 my-1 justify-content-between d-flex">

@@ -7,11 +7,11 @@ export default function StateWise() {
 	const [ data, setData ] = useState([])
 	const [ ready, setReady ] = useState(false)
 	const colors = [
-		{ backgroundColor: '#6610f244', color: '#6610f2' },
+		{ backgroundColor: '#fd7e1444', color: '#fd7e14' },
 		{ backgroundColor: '#007bff44', color: '#007bff' },
 		{ backgroundColor: '#dc354544', color: '#dc3545' },
 		{ backgroundColor: '#28a74544', color: '#28a745' },
-		{ backgroundColor: '#e83e8c44', color: '#e83e8c' },
+		{ backgroundColor: '#6610f244', color: '#6610f2' },
 	]
 	useEffect(() => {
 		fetch("https://api.covid19india.org/v4/data.json")
