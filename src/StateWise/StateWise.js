@@ -1,7 +1,7 @@
 import React from 'react'
 import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Bar, ResponsiveContainer } from 'recharts'
 import './StateWise.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default function StateWise(props) {
 	const states = {

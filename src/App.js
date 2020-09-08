@@ -12,6 +12,7 @@ export default function App() {
 	const [ type, setType ] = useState(0)
 	const [ states, setStates ] = useState([])
 	const [ title, setTitle ] = useState('Covid-19 India Tracker')
+	const [ districts, setDistricts ] = useState([])
 	useEffect(() => {
 		fetch('https://api.covid19india.org/data.json')
 		.then(rawResponse => rawResponse.json())
@@ -53,6 +54,9 @@ export default function App() {
 			setStates(states)
 			setReady(true)
 		})
+		fetch('https://api.covid19india.org/state_district_wise.json')
+		.then(rawResponse => rawResponse.json())
+		.then(response => setDistricts(response))
 	}, [])
 	useEffect(() => {
 		document.title = title
@@ -66,6 +70,7 @@ export default function App() {
 				recovered={recovered}
 				tested={tested}
 				states={states[type]}
+				districts={districts}
 				type={type}
 				setType={setType}
 				setTitle={setTitle}
