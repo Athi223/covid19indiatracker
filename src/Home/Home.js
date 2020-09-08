@@ -28,7 +28,7 @@ export default function Home() {
 			setDeceased(deceased)
 			setRecovered(recovered)
 			setReady(true)
-			setTested(new Intl.NumberFormat('en-IN').format(Math.max.apply(Math, response.tested.map(obj => obj.totalsamplestested))))
+			setTested(new Intl.NumberFormat('en-IN').format(response.tested[response.tested.length-1].totalsamplestested))
 		})
 		document.title = 'Covid-19 India Tracker';
 	}, [])

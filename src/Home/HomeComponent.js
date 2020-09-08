@@ -13,25 +13,25 @@ export default function HomeComponent(props) {
 				<div className="col-12 col-md-6 col-lg-2 col-xl-2">
 					<div className="mx-2 my-4 bg-warning cases-types h3 p-4 d-flex flex-column justify-content-around">
 						<span>Confirmed</span>
-						<span>{new Intl.NumberFormat('en-IN').format(Math.max.apply(Math, props.confirmed.map(obj => obj.confirmed)))}</span>
+						<span>{new Intl.NumberFormat('en-IN').format(props.confirmed[props.confirmed.length-1].confirmed)}</span>
 					</div>
 				</div>
 				<div className="col-12 col-md-6 col-lg-2 col-xl-2">
 					<div className="mx-2 my-4 bg-primary cases-types h3 p-4 d-flex flex-column justify-content-around">
 						<span>Active</span>
-						<span>{new Intl.NumberFormat('en-IN').format(Math.max.apply(Math, props.active.map(obj => obj.active)))}</span>
+						<span>{new Intl.NumberFormat('en-IN').format(props.active[props.active.length-1].active)}</span>
 					</div>
 				</div>
 				<div className="col-12 col-md-6 col-lg-2 col-xl-2">
 					<div className="mx-2 my-4 bg-danger cases-types h3 p-4 d-flex flex-column justify-content-around">
 						<span>Deceased</span>
-						<span>{new Intl.NumberFormat('en-IN').format(Math.max.apply(Math, props.deceased.map(obj => obj.deceased)))}</span>
+						<span>{new Intl.NumberFormat('en-IN').format(props.deceased[props.deceased.length-1].deceased)}</span>
 					</div>
 				</div>
 				<div className="col-12 col-md-6 col-lg-2 col-xl-2">
 					<div className="mx-2 my-4 bg-success cases-types h3 p-4 d-flex flex-column justify-content-around">
 						<span>Recovered</span>
-						<span>{new Intl.NumberFormat('en-IN').format(Math.max.apply(Math, props.recovered.map(obj => obj.recovered)))}</span>
+						<span>{new Intl.NumberFormat('en-IN').format(props.recovered[props.recovered.length-1].recovered)}</span>
 					</div>
 				</div>
 				<div className="col-12 col-md-6 col-lg-2 col-xl-2">
