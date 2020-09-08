@@ -1,11 +1,46 @@
-import React, { useState, useEffect } from 'react'
-import StateWiseContainer from './StateWiseContainer'
-import Loader from '../Loader'
+import React from 'react'
+import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Bar, ResponsiveContainer } from 'recharts'
+import './StateWise.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function StateWise() {
-	const [ type, setType ] = useState(0)
-	const [ data, setData ] = useState([])
-	const [ ready, setReady ] = useState(false)
+export default function StateWise(props) {
+	const states = {
+		'AP': 'Andhra Pradesh',
+		'AR': 'Arunachal Pradesh',
+		'AS': 'Assam',
+		'BR': 'Bihar',
+		'CT': 'Chhattisgarh',
+		'GA': 'Goa',
+		'GJ': 'Gujarat',
+		'HR': 'Haryana',
+		'HP': 'Himachal Pradesh',
+		'JH': 'Jharkhand',
+		'KA': 'Karnataka',
+		'KL': 'Kerala',
+		'MP': 'Madhya Pradesh',
+		'MH': 'Maharashtra',
+		'MN': 'Manipur',
+		'ML': 'Meghalaya',
+		'MZ': 'Mizoram',
+		'NL': 'Nagaland',
+		'OR': 'Odisha',
+		'PB': 'Punjab',
+		'RJ': 'Rajasthan',
+		'SK': 'Sikkim',
+		'TN': 'Tamil Nadu',
+		'TG': 'Telangana',
+		'TR': 'Tripura',
+		'UT': 'Uttarakhand',
+		'UP': 'Uttar Pradesh',
+		'WB': 'West Bengal',
+		'AN': 'Andaman and Nicobar Islands',
+		'CH': 'Chandigarh',
+		'DN': 'Dadra and Nagar Haveli',
+		'DL': 'Delhi',
+		'JK': 'Jammu and Kashmir',
+		'LA': 'Ladakh',
+		'PY': 'Puducherry' 
+	}
 	const colors = [
 		{ backgroundColor: '#fd7e1444', color: '#fd7e14' },
 		{ backgroundColor: '#007bff44', color: '#007bff' },
@@ -13,34 +48,27 @@ export default function StateWise() {
 		{ backgroundColor: '#28a74544', color: '#28a745' },
 		{ backgroundColor: '#6610f244', color: '#6610f2' },
 	]
-	useEffect(() => {
-		fetch("https://api.covid19india.org/v4/data.json")
-		.then(rawResponse => rawResponse.json())
-		.then(response => {
-			let data = [[], [], [], [], []]
-			for(const stateid in response) {
-				const total =  response[stateid]['total']
-				const types = [ 'confirmed', 'active', 'deceased', 'recovered', 'tested', 'other']
-				const current = [
-					total[types[0]] || 0,
-					(total[types[0]] || 0) - (total[types[2]] || 0) - (total[types[3]] || 0) - (total[types[5]] || 0),
-					total[types[2]] || 0,
-					total[types[3]] || 0,
-					total[types[4]] || 0
-				]
-				if(stateid !== 'TT')
-					for(let i=0;i<5;++i)
-						data[i].push({state: stateid, [types[i]]: current[i]})
-			}
-			setData(data)
-			setReady(true)
-		})
-		document.title = 'StateWise Data';
-	}, [])
-	if(ready)
-		return(
-			<StateWiseContainer colors={colors} type={type} data={data[type]} setType={setType} />
-		)
-	else
-		return(<Loader />)
+    return(
+        <div style={{ height: "85vh", width:"100vw" }}>
+			<div className="container p-2 my-1 justify-content-between d-flex">
+				<div className="cases-type p-2" style={colors[0]} onClick={() => props.setType(0)}>Confirmed</div>
+				<div className="cases-type p-2" style={colors[1]} onClick={() => props.setType(1)}>Active</div>
+				<div className="cases-type p-2" style={colors[2]} onClick={() => props.setType(2)}>Deceased</div>
+				<div className="cases-type p-2" style={colors[3]} onClick={() => props.setType(3)}>Recovered</div>
+				<div className="cases-type p-2" style={colors[4]} onClick={() => props.setType(4)}>Tested</div>
+			</div>
+			<ResponsiveContainer>
+				<BarChart data={props.states} margin={{ left: 20, right: 20 }} >
+					<CartesianGrid strokeDasharray="3 3" />
+					<XAxis dataKey="state" />
+					<YAxis />
+					<Tooltip labelFormatter={(stateid) => states[stateid]} />
+					<Bar
+						dataKey={['confirmed', 'active', 'deceased', 'recovered', 'tested'][props.type]}
+						fill={colors[props.type].color}
+					/>
+				</BarChart>
+			</ResponsiveContainer>
+		</div>
+    )
 }
