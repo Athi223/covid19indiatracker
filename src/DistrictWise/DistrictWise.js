@@ -5,50 +5,49 @@ import Graph from './Graph'
 import './DistrictWise.css'
 
 export default function DistrictWise(props) {
-    const [ state, setState ] = useState(null)
+    const [ state, setState ] = useState()
     const [ data, setData ] = useState([])
     const [ districts, setDistricts ] = useState([])
     const [ district, setDistrict] = useState('')
-    const [ graphs, setGraphs ] = useState(null)
+    const [ graphs, setGraphs ] = useState()
+	useEffect(() => {
+		document.title = "District Wise"
+	}, [])
     useEffect(() => {
         if(state) {
             const districtData = props.districts[state]
-            let graphs = [[], [], [], [], []]
+            let graphs = [[], []]
             setDistricts(districtData)
             for(const district in districtData) {
-                const confirmed = districtData[district].total.confirmed
-                const deceased = districtData[district].total.deceased
-                const recovered = districtData[district].total.recovered
-                const tested = districtData[district].total.tested
-                graphs[0].push({ district: district, confirmed: confirmed })
-                graphs[1].push({ district: district, active: (confirmed - deceased - recovered)})
-                graphs[2].push({ district: district, deceased: deceased})
-                graphs[3].push({ district: district, recovered: recovered})
-                graphs[4].push({ district: district, tested: tested})
+                const confirmed = districtData[district].total.confirmed || 0
+                const deceased = districtData[district].total.deceased || 0
+                const recovered = districtData[district].total.recovered || 0
+                graphs[0].push({ district: district, confirmed: confirmed, active: (confirmed - deceased - recovered) })
+                graphs[1].push({ district: district, deceased: deceased, recovered: recovered})
             }
             setGraphs(graphs)
-            setDistrict('')
         }
+        setDistrict('')
     }, [props.districts, state])
     useEffect(() => {
         if(district) {
             let data = []
-            const confirmed = districts[district].total.confirmed
-            const deceased = districts[district].total.deceased
-            const recovered = districts[district].total.recovered
-            const tested = districts[district].total.tested
-            data.push(confirmed)
-            data.push(confirmed - deceased - recovered)
-            data.push(deceased)
-            data.push(recovered)
-            data.push(tested)
+            const confirmed = districts[district].total.confirmed || 0
+            const deceased = districts[district].total.deceased || 0
+            const recovered = districts[district].total.recovered || 0
+            const tested = districts[district].total.tested || 0
+            data.push({ type: 'Confirmed', value: confirmed })
+            data.push({ type: 'Active', value: (confirmed - deceased - recovered) })
+            data.push({ type: 'Deceased', value: deceased })
+            data.push({ type: 'Recovered', value: recovered })
+            data.push({ type: 'Tested', value: tested })
             setData(data)
         }
     }, [district, districts])
     return(
         <div className="container-fluid">
             <div className="row text-center">
-                <div className="col-12 col-md-6 col-lg-2 col-xl-2 py-4 d-flex justify-content-around flex-column">
+                <div className="col-12 col-md-6 col-lg-4 col-xl-2 py-4 d-flex justify-content-around flex-column">
                     <div className="input-group input-group-lg">
                         <div className="input-group-prepend">
                             <label className="input-group-text" htmlFor="state" style={{ fontWeight: "bold" }}>State: </label>
@@ -62,65 +61,52 @@ export default function DistrictWise(props) {
                         <Selection default="District" options={Object.keys(districts)} value={district} handleChange={setDistrict} />
                     </div>
 				</div>
-				<div className="col-12 col-md-6 col-lg-2 col-xl-2">
+				<div className="col-12 col-md-6 col-lg-4 col-xl-2">
 					<div className="mx-2 my-4 cases-types h3 p-4 d-flex flex-column justify-content-around" style ={{ backgroundColor: '#fd7e14' }}>
 						<span>Confirmed</span>
-						<span>{data[0] && district ? new Intl.NumberFormat('en-IN').format(data[0]) : '-'}</span>
+						<span>{data[0] && district ? new Intl.NumberFormat('en-IN').format(data[0]['value']) : '-'}</span>
 					</div>
 				</div>
-				<div className="col-12 col-md-6 col-lg-2 col-xl-2">
+				<div className="col-12 col-md-6 col-lg-4 col-xl-2">
 					<div className="mx-2 my-4 bg-primary cases-types h3 p-4 d-flex flex-column justify-content-around">
 						<span>Active</span>
-						<span>{data[1] && district ? new Intl.NumberFormat('en-IN').format(data[1]) : '-'}</span>
+						<span>{data[1] && district ? new Intl.NumberFormat('en-IN').format(data[1]['value']) : '-'}</span>
 					</div>
 				</div>
-				<div className="col-12 col-md-6 col-lg-2 col-xl-2">
+				<div className="col-12 col-md-6 col-lg-4 col-xl-2">
 					<div className="mx-2 my-4 bg-danger cases-types h3 p-4 d-flex flex-column justify-content-around">
 						<span>Deceased</span>
-						<span>{data[2] && district ? new Intl.NumberFormat('en-IN').format(data[2]) : '-'}</span>
+						<span>{data[2] && district ? new Intl.NumberFormat('en-IN').format(data[2]['value']) : '-'}</span>
 					</div>
 				</div>
-				<div className="col-12 col-md-6 col-lg-2 col-xl-2">
+				<div className="col-12 col-md-6 col-lg-4 col-xl-2">
 					<div className="mx-2 my-4 bg-success cases-types h3 p-4 d-flex flex-column justify-content-around">
 						<span>Recovered</span>
-						<span>{data[3] && district ? new Intl.NumberFormat('en-IN').format(data[3]) : '-'}</span>
+						<span>{data[3] && district ? new Intl.NumberFormat('en-IN').format(data[3]['value']) : '-'}</span>
 					</div>
 				</div>
-                <div className="col-12 col-md-6 col-lg-2 col-xl-2">
+                <div className="col-12 col-md-6 col-lg-4 col-xl-2">
 					<div className="mx-2 my-4 cases-types h3 p-4 d-flex flex-column justify-content-around" style={{ backgroundColor: "#6610f2" }}>
 						<span>Tested</span>
-						<span>{data[4] && district ? new Intl.NumberFormat('en-IN').format(data[4]) : '-'}</span>
+						<span>{data[4] && district ? new Intl.NumberFormat('en-IN').format(data[4]['value']) : '-'}</span>
 					</div>
 				</div>
 			</div>
-            {graphs ? <div><div className="row text-center px-5">
-                <div className="col-12 col-md-12 col-lg-6 col-xl-6">
-                    <h4 style={{ color: "#fd7e14" }}>Confirmed</h4>
-                    <div className="m-2 graph">
-                        <Graph data={graphs[0]} type="confirmed" fill="#fd7e14" />
-                    </div>
-                </div>
-                <div className="col-12 col-md-12 col-lg-6 col-xl-6">
-                    <h4 className="text-primary">Active</h4>
-                    <div className="m-2 graph">
-                        <Graph data={graphs[1]} type="active" fill="#007bff" />
+            {graphs && state ? <div>
+            <div className="row text-center">
+                <div className="col-12 col-md-12 col-lg-12 col-xl-12">
+                    <div className="d-flex flex-column">
+                        <div className="m-2 dist-graph">
+                            <Graph data={graphs[0]} type1="confirmed" type2="active" fill1="#fd7e14" fill2="#007bff" />
+                        </div>
+                        <div className="m-2 dist-graph">
+                            <Graph data={graphs[1]} type1="recovered" type2="deceased" fill1="#28a745" fill2="#dc3545" />
+                        </div>
                     </div>
                 </div>
             </div>
-            <div className="row text-center px-5">
-                <div className="col-12 col-md-12 col-lg-6 col-xl-6">
-                    <h4 className="text-danger">Deceased</h4>
-                    <div className="m-2 graph">
-                        <Graph data={graphs[2]} type="deceased" fill="#dc3545" />
-                    </div>
-                </div>
-                <div className="col-12 col-md-12 col-lg-6 col-xl-6">
-                    <h4 className="text-success">Recovered</h4>
-                    <div className="m-2 graph">
-                        <Graph data={graphs[3]} type="recovered" fill="#28a745" />
-                    </div>
-                </div>
-            </div></div> : null}
+            </div> : null}
+            
         </div>
     )
 }

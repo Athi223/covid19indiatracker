@@ -12,6 +12,9 @@ export default function StateWise(props) {
 		{ backgroundColor: '#28a74544', color: '#28a745' },
 		{ backgroundColor: '#6610f244', color: '#6610f2' },
 	]
+	React.useEffect(() => {
+		document.title = "State Wise"
+	}, [])
     return(
         <div style={{ height: "85vh", width:"100vw" }}>
 			<div className="container p-2 my-1 justify-content-between d-flex">

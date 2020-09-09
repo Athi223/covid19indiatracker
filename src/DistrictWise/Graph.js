@@ -9,7 +9,8 @@ export default function Graph(props) {
                 <YAxis />
                 <CartesianGrid />
                 <Tooltip />
-                <Bar dataKey={props.type} fill={props.fill} />
+                <Bar dataKey={props.type1} fill={props.fill1} />
+                <Bar dataKey={props.type2} fill={props.fill2} />
             </BarChart>
         </ResponsiveContainer>
     )

@@ -11,7 +11,6 @@ export default function App() {
 	const [ ready, setReady ] = useState(false)
 	const [ type, setType ] = useState(0)
 	const [ states, setStates ] = useState([])
-	const [ title, setTitle ] = useState('Covid-19 India Tracker')
 	const [ districts, setDistricts ] = useState({})
 	useEffect(() => {
 		fetch('https://api.covid19india.org/data.json')
@@ -58,9 +57,6 @@ export default function App() {
 			setReady(true)
 		})
 	}, [])
-	useEffect(() => {
-		document.title = title
-	}, [title])
 	if(ready)
 		return(
 			<AppComponent
@@ -73,7 +69,6 @@ export default function App() {
 				districts={districts}
 				type={type}
 				setType={setType}
-				setTitle={setTitle}
 			/>
 		)
 	else

@@ -7,16 +7,15 @@ import DistrictWise from './DistrictWise/DistrictWise'
 
 export default function AppComponent(props) {
     const titles = [ 'Covid-19 India Tracker', 'State Wise', 'District Wise', 'About', ]
-    const setTitle = (i) => props.setTitle(titles[i])
     return (
 		<Router>
 			<div>
 				<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
 					<div className="navbar-nav">
-						<NavLink exact activeClassName="active" className="nav-item nav-link h5" to="/" onClick={() => setTitle(0)}>{titles[0]}</NavLink>
-						<NavLink activeClassName="active" className="nav-item nav-link h5" to="/statewise" onClick={() => setTitle(1)}>{titles[1]}</NavLink>
-						<NavLink activeClassName="active" className="nav-item nav-link h5" to="/districtwise" onClick={() => setTitle(2)}>{titles[2]}</NavLink>
-						<NavLink activeClassName="active" className="nav-item nav-link h5" to="/about" onClick={() => setTitle(3)}>{titles[3]}</NavLink>
+						<NavLink exact activeClassName="active" className="nav-item nav-link h5" to="/">{titles[0]}</NavLink>
+						<NavLink activeClassName="active" className="nav-item nav-link h5" to="/statewise">{titles[1]}</NavLink>
+						<NavLink activeClassName="active" className="nav-item nav-link h5" to="/districtwise">{titles[2]}</NavLink>
+						<NavLink activeClassName="active" className="nav-item nav-link h5" to="/about">{titles[3]}</NavLink>
 					</div>
 				</nav>
 				<Switch>
