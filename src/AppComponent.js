@@ -6,8 +6,8 @@ import StateWise from './StateWise/StateWise'
 import DistrictWise from './DistrictWise/DistrictWise'
 
 export default function AppComponent(props) {
-    const titles = [ 'Covid-19 India Tracker', 'State Wise', 'District Wise', 'About', ]
-    return (
+	const titles = [ 'Covid-19 India Tracker', 'State Wise', 'District Wise', 'About', ]
+	return (
 		<Router>
 			<div>
 				<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -22,20 +22,20 @@ export default function AppComponent(props) {
 					<Route path="/about">
 						<About />
 					</Route>
-                    <Route path="/districtwise">
-						<DistrictWise statestotal={props.states} districts={props.districts} />
+					<Route path="/districtwise">
+						<DistrictWise districts={props.districts} />
 					</Route>
 					<Route path="/statewise">
 						<StateWise states={props.states[props.type]} type={props.type} setType={props.setType} />
 					</Route>
 					<Route path="/">
 						<Home
-                            confirmed={props.confirmed}
-                            active={props.active}
-                            deceased={props.deceased}
-                            recovered={props.recovered}
-                            tested={props.tested}
-                        />
+							confirmed={props.confirmed}
+							active={props.active}
+							deceased={props.deceased}
+							recovered={props.recovered}
+							tested={props.tested}
+						/>
 					</Route>
 				</Switch>
 			</div>
@@ -44,5 +44,5 @@ export default function AppComponent(props) {
 }
 
 function About() {
-    return <h1>About</h1>
+	return <h1>About</h1>
 }

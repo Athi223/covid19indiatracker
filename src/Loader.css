@@ -1,14 +1,14 @@
 .loader {
-	display: flex;
-	margin: 10vh auto;
 	height: 60vh;
 	pointer-events: none;
+	animation: loader-spin infinite 20s linear;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-		.loader {
-		animation: loader-spin infinite 20s linear;
-		}
+.wrapper {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 @keyframes loader-spin {
