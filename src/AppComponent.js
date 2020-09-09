@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-do
 import Home from './Home/Home'
 import StateWise from './StateWise/StateWise'
 import DistrictWise from './DistrictWise/DistrictWise'
+import About from './About'
 
 export default function AppComponent(props) {
 	const titles = [ 'Covid-19 India Tracker', 'State Wise', 'District Wise', 'About', ]
@@ -41,8 +42,4 @@ export default function AppComponent(props) {
 			</div>
 		</Router>
 	);
-}
-
-function About() {
-	return <h1>About</h1>
 }

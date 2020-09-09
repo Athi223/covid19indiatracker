@@ -1,0 +1,23 @@
+ /* unvisited link */
+a:link, a:visited, a:active {
+	color: #ffff4d;
+}
+
+/* mouse over link */
+a:hover {
+	color: lime;
+} 
+
+.about {
+	background: radial-gradient(ellipse at center, #BB1AD0cc, #4771C1cc);
+    border: 10px double orangered;
+	border-radius: 16px;
+	color: #ffff4d;
+	text-shadow: 2px 2px 8px black;
+    padding: 100px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
