@@ -24,10 +24,10 @@ export default function AppComponent(props) {
 						<About />
 					</Route>
                     <Route path="/districtwise">
-						<DistrictWise districts={props.districts} />
+						<DistrictWise statestotal={props.states} districts={props.districts} />
 					</Route>
 					<Route path="/statewise">
-						<StateWise states={props.states} type={props.type} setType={props.setType} />
+						<StateWise states={props.states[props.type]} type={props.type} setType={props.setType} />
 					</Route>
 					<Route path="/">
 						<Home

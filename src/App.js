@@ -12,7 +12,7 @@ export default function App() {
 	const [ type, setType ] = useState(0)
 	const [ states, setStates ] = useState([])
 	const [ title, setTitle ] = useState('Covid-19 India Tracker')
-	const [ districts, setDistricts ] = useState([])
+	const [ districts, setDistricts ] = useState({})
 	useEffect(() => {
 		fetch('https://api.covid19india.org/data.json')
 		.then(rawResponse => rawResponse.json())
@@ -36,7 +36,7 @@ export default function App() {
 		fetch("https://api.covid19india.org/v4/data.json")
 		.then(rawResponse => rawResponse.json())
 		.then(response => {
-			let states = [[], [], [], [], []]
+			let states = [[], [], [], [], []], districts = {}
 			for(const stateid in response) {
 				const total =  response[stateid]['total']
 				const types = [ 'confirmed', 'active', 'deceased', 'recovered', 'tested', 'other']
@@ -47,16 +47,16 @@ export default function App() {
 					total[types[3]] || 0,
 					total[types[4]] || 0
 				]
-				if(stateid !== 'TT')
+				if(stateid !== 'TT') {
+					districts[stateid] = response[stateid]['districts']
 					for(let i=0;i<5;++i)
 						states[i].push({state: stateid, [types[i]]: current[i]})
+				}
 			}
 			setStates(states)
+			setDistricts(districts)
 			setReady(true)
 		})
-		fetch('https://api.covid19india.org/state_district_wise.json')
-		.then(rawResponse => rawResponse.json())
-		.then(response => setDistricts(response))
 	}, [])
 	useEffect(() => {
 		document.title = title
@@ -69,7 +69,7 @@ export default function App() {
 				deceased={deceased}
 				recovered={recovered}
 				tested={tested}
-				states={states[type]}
+				states={states}
 				districts={districts}
 				type={type}
 				setType={setType}

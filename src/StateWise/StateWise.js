@@ -2,45 +2,9 @@ import React from 'react'
 import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Bar, ResponsiveContainer } from 'recharts'
 import './StateWise.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { states } from '../States'
 
 export default function StateWise(props) {
-	const states = {
-		'AP': 'Andhra Pradesh',
-		'AR': 'Arunachal Pradesh',
-		'AS': 'Assam',
-		'BR': 'Bihar',
-		'CT': 'Chhattisgarh',
-		'GA': 'Goa',
-		'GJ': 'Gujarat',
-		'HR': 'Haryana',
-		'HP': 'Himachal Pradesh',
-		'JH': 'Jharkhand',
-		'KA': 'Karnataka',
-		'KL': 'Kerala',
-		'MP': 'Madhya Pradesh',
-		'MH': 'Maharashtra',
-		'MN': 'Manipur',
-		'ML': 'Meghalaya',
-		'MZ': 'Mizoram',
-		'NL': 'Nagaland',
-		'OR': 'Odisha',
-		'PB': 'Punjab',
-		'RJ': 'Rajasthan',
-		'SK': 'Sikkim',
-		'TN': 'Tamil Nadu',
-		'TG': 'Telangana',
-		'TR': 'Tripura',
-		'UT': 'Uttarakhand',
-		'UP': 'Uttar Pradesh',
-		'WB': 'West Bengal',
-		'AN': 'Andaman and Nicobar Islands',
-		'CH': 'Chandigarh',
-		'DN': 'Dadra and Nagar Haveli',
-		'DL': 'Delhi',
-		'JK': 'Jammu and Kashmir',
-		'LA': 'Ladakh',
-		'PY': 'Puducherry' 
-	}
 	const colors = [
 		{ backgroundColor: '#fd7e1444', color: '#fd7e14' },
 		{ backgroundColor: '#007bff44', color: '#007bff' },

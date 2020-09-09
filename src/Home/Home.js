@@ -60,7 +60,7 @@ export default function Home(props) {
 				</div>
 				<div className="col-12 col-md-12 col-lg-6 col-xl-6">
 					<h4 className="text-primary">Active</h4>
-				<div className="m-2 graph">
+					<div className="m-2 graph">
 						<ResponsiveContainer>
 						<LineChart data={props.active} margin={{ left: 20 }}>
 							<CartesianGrid strokeDasharray="3 3" />
@@ -77,7 +77,7 @@ export default function Home(props) {
 			<div className="row text-center">
 				<div className="col-12 col-md-12 col-lg-6 col-xl-6">
 					<h4 className="text-danger">Deceased</h4>
-				<div className="m-2 graph">
+					<div className="m-2 graph">
 						<ResponsiveContainer>
 						<LineChart data={props.deceased} margin={{ left: 20 }}>
 							<CartesianGrid strokeDasharray="3 3" />
@@ -91,7 +91,7 @@ export default function Home(props) {
 				</div>
 				<div className="col-12 col-md-12 col-lg-6 col-xl-6">
 					<h4 className="text-success">Recovered</h4>
-				<div className="m-2 graph">
+					<div className="m-2 graph">
 						<ResponsiveContainer>
 						<LineChart data={props.recovered} margin={{ left: 20 }}>
 							<CartesianGrid strokeDasharray="3 3" />
