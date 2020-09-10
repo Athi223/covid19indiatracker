@@ -1,3 +1,21 @@
+## Dashboard
+
+![Imgur](https://i.imgur.com/Ckiuq6q.png)
+
+### Credits (API)
+
+<a href="https://api.covid19india.org/">Covid-19 India API</a>
+
+### Current Visualizations
+
+<ul>
+    <li>Dashboard (Nationwide Data)</li>
+    <li>State Wise data</li>
+    <li>District Wise data</li>
+    <li>About (Credits)</li>
+</ul>
+
+<hr />
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

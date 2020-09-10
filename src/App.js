@@ -8,7 +8,7 @@ export default function App() {
 	const [ deceased, setDeceased ] = useState([])
 	const [ recovered, setRecovered ] = useState([])
 	const [ tested, setTested ] = useState(0)
-	const [ ready, setReady ] = useState(false)
+	const [ ready, setReady ] = useState(0)
 	const [ type, setType ] = useState(0)
 	const [ states, setStates ] = useState([])
 	const [ districts, setDistricts ] = useState({})
@@ -32,6 +32,7 @@ export default function App() {
 			setDeceased(deceased)
 			setRecovered(recovered)
 			setTested(new Intl.NumberFormat('en-IN').format(response.tested[response.tested.length-1].totalsamplestested))
+			setReady(prev => prev + 1)
 			fetch('https://api.covid19api.com/world/total')
 			.then(rawResponse => rawResponse.json())
 			.then(response => {
@@ -66,10 +67,10 @@ export default function App() {
 			}
 			setStates(states)
 			setDistricts(districts)
-			setReady(true)
+			setReady(prev => prev + 1)
 		})
 	}, [])
-	if(ready)
+	if(ready === 2)
 		return(
 			<AppComponent
 				confirmed={confirmed}
