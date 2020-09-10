@@ -17,7 +17,7 @@ export default function StateWise(props) {
 	}, [])
     return(
         <div style={{ height: "85vh", width:"100vw" }}>
-			<div className="container p-2 my-1 justify-content-between d-flex">
+			<div className="container p-2 my-1 justify-content-between d-flex flex-column flex-sm-column flex-md-column flex-lg-row flex-xl-row">
 				<div className="cases-type p-2" style={colors[0]} onClick={() => props.setType(0)}>Confirmed</div>
 				<div className="cases-type p-2" style={colors[1]} onClick={() => props.setType(1)}>Active</div>
 				<div className="cases-type p-2" style={colors[2]} onClick={() => props.setType(2)}>Deceased</div>

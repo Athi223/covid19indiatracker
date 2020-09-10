@@ -12,6 +12,7 @@ export default function App() {
 	const [ type, setType ] = useState(0)
 	const [ states, setStates ] = useState([])
 	const [ districts, setDistricts ] = useState({})
+	const [ world, SetWorld ] = useState({})
 	useEffect(() => {
 		fetch('https://api.covid19india.org/data.json')
 		.then(rawResponse => rawResponse.json())
@@ -31,6 +32,17 @@ export default function App() {
 			setDeceased(deceased)
 			setRecovered(recovered)
 			setTested(new Intl.NumberFormat('en-IN').format(response.tested[response.tested.length-1].totalsamplestested))
+			fetch('https://api.covid19api.com/world/total')
+			.then(rawResponse => rawResponse.json())
+			.then(response => {
+				const world = [
+					{ type: 'Confirmed', India: parseInt(confirmed[confirmed.length-1].confirmed), World: response.TotalConfirmed },
+					{ type: 'Active', India: parseInt(active[active.length-1].active), World: (response.TotalConfirmed - response.TotalDeaths - response.TotalRecovered) },
+					{ type: 'Recovered', India: parseInt(recovered[recovered.length-1].recovered), World: response.TotalRecovered },
+					{ type: 'Deceased', India: parseInt(deceased[deceased.length-1].deceased), World: response.TotalDeaths },
+				]
+				SetWorld(world)
+			})
 		})
 		fetch("https://api.covid19india.org/v4/data.json")
 		.then(rawResponse => rawResponse.json())
@@ -68,6 +80,7 @@ export default function App() {
 				states={states}
 				districts={districts}
 				type={type}
+				world={world}
 				setType={setType}
 			/>
 		)

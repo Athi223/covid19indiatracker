@@ -36,6 +36,7 @@ export default function AppComponent(props) {
 							deceased={props.deceased}
 							recovered={props.recovered}
 							tested={props.tested}
+							world={props.world}
 						/>
 					</Route>
 				</Switch>
