@@ -47,7 +47,7 @@ export default function DistrictWise(props) {
 	return(
 		<div className="container-fluid">
 			<div className="row text-center">
-				<div className="col-12 col-md-6 col-lg-4 col-xl-2 py-4 d-flex justify-content-around flex-column">
+				<div className="col-6 col-md-6 col-lg-4 col-xl-2 py-4 d-flex justify-content-around flex-column">
 					<div className="input-group input-group-lg">
 						<div className="input-group-prepend">
 							<label className="input-group-text" htmlFor="state" style={{ fontWeight: "bold" }}>State: </label>
@@ -61,32 +61,32 @@ export default function DistrictWise(props) {
 						<Selection default="District" options={Object.keys(districts)} value={district} handleChange={setDistrict} />
 					</div>
 				</div>
-				<div className="col-12 col-md-6 col-lg-4 col-xl-2">
-					<div className="mx-2 my-4 cases-types h3 p-4 d-flex flex-column justify-content-around" style ={{ backgroundColor: '#fd7e14' }}>
+				<div className="col-6 col-md-6 col-lg-4 col-xl-2">
+					<div className="mx-2 my-4 cases-types h3 py-4 d-flex flex-column justify-content-around" style ={{ backgroundColor: '#fd7e14' }}>
 						<span>Confirmed</span>
 						<span>{data[0] && district ? new Intl.NumberFormat('en-IN').format(data[0]['value']) : '-'}</span>
 					</div>
 				</div>
-				<div className="col-12 col-md-6 col-lg-4 col-xl-2">
-					<div className="mx-2 my-4 bg-primary cases-types h3 p-4 d-flex flex-column justify-content-around">
+				<div className="col-6 col-md-6 col-lg-4 col-xl-2">
+					<div className="mx-2 my-4 bg-primary cases-types h3 py-4 d-flex flex-column justify-content-around">
 						<span>Active</span>
 						<span>{data[1] && district ? new Intl.NumberFormat('en-IN').format(data[1]['value']) : '-'}</span>
 					</div>
 				</div>
-				<div className="col-12 col-md-6 col-lg-4 col-xl-2">
-					<div className="mx-2 my-4 bg-danger cases-types h3 p-4 d-flex flex-column justify-content-around">
+				<div className="col-6 col-md-6 col-lg-4 col-xl-2">
+					<div className="mx-2 my-4 bg-danger cases-types h3 py-4 d-flex flex-column justify-content-around">
 						<span>Deceased</span>
 						<span>{data[2] && district ? new Intl.NumberFormat('en-IN').format(data[2]['value']) : '-'}</span>
 					</div>
 				</div>
-				<div className="col-12 col-md-6 col-lg-4 col-xl-2">
-					<div className="mx-2 my-4 bg-success cases-types h3 p-4 d-flex flex-column justify-content-around">
+				<div className="col-6 col-md-6 col-lg-4 col-xl-2">
+					<div className="mx-2 my-4 bg-success cases-types h3 py-4 d-flex flex-column justify-content-around">
 						<span>Recovered</span>
 						<span>{data[3] && district ? new Intl.NumberFormat('en-IN').format(data[3]['value']) : '-'}</span>
 					</div>
 				</div>
-				<div className="col-12 col-md-6 col-lg-4 col-xl-2">
-					<div className="mx-2 my-4 cases-types h3 p-4 d-flex flex-column justify-content-around" style={{ backgroundColor: "#6610f2" }}>
+				<div className="col-6 col-md-6 col-lg-4 col-xl-2">
+					<div className="mx-2 my-4 cases-types h3 py-4 d-flex flex-column justify-content-around" style={{ backgroundColor: "#6610f2" }}>
 						<span>Tested</span>
 						<span>{data[4] && district ? new Intl.NumberFormat('en-IN').format(data[4]['value']) : '-'}</span>
 					</div>
