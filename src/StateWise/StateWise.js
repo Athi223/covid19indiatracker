@@ -11,13 +11,6 @@ export default function StateWise(props) {
 	}, [])
     return(
         <div style={{ height: "80vh", width:"100vw" }}>
-			{/* <div className="container p-2 my-1 justify-content-between d-flex flex-column flex-sm-column flex-md-column flex-lg-row flex-xl-row">
-				<div className="cases-type p-2" style={colors[0]} onClick={() => props.setType(0)}>Confirmed</div>
-				<div className="cases-type p-2" style={colors[1]} onClick={() => props.setType(1)}>Active</div>
-				<div className="cases-type p-2" style={colors[2]} onClick={() => props.setType(2)}>Deceased</div>
-				<div className="cases-type p-2" style={colors[3]} onClick={() => props.setType(3)}>Recovered</div>
-				<div className="cases-type p-2" style={colors[4]} onClick={() => props.setType(4)}>Tested</div>
-			</div> */}
 			<div className="container">
 				<Buttons setType={props.setType} type={props.type} colors={colors} />
 			</div>
@@ -26,11 +19,8 @@ export default function StateWise(props) {
 					<CartesianGrid strokeDasharray="3 3" />
 					<XAxis dataKey="state" />
 					<YAxis />
-					<Tooltip labelFormatter={(stateid) => states[stateid]} />
-					<Bar
-						dataKey={['confirmed', 'active', 'deceased', 'recovered', 'tested'][props.type]}
-						fill={colors[props.type]}
-					/>
+					<Tooltip labelFormatter={stateid => states[stateid]} formatter={value => new Intl.NumberFormat('en-IN').format(value)} />
+					<Bar dataKey={['confirmed', 'active', 'deceased', 'recovered', 'tested'][props.type]} fill={colors[props.type]} />
 				</BarChart>
 			</ResponsiveContainer>
 		</div>
@@ -47,7 +37,7 @@ function Buttons(props) {
 		})
 	}
 	return(
-		<div className="row my-4 text-center" style={{ backgroundColor: 'aliceblue', borderRadius: 14 }}>
+		<div className="row my-4 text-center" style={{ backgroundColor: 'whitesmoke', borderRadius: 14 }}>
 			<div className="col-6 col-md-4 col-lg-2 col-xl-2">
 				<div className="p-2 my-3 font-weight-bold" style={{ fontSize: 20 }}>Category :</div>
 			</div>
