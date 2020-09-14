@@ -10,13 +10,19 @@ a:hover {
 
 .about {
 	background: radial-gradient(ellipse at center, #BB1AD0cc, #4771C1cc);
-    border: 10px double orangered;
+	border: 10px double orangered;
 	border-radius: 16px;
 	color: #ffff4d;
 	text-shadow: 2px 2px 8px black;
-    padding: 10vh;
+	padding: 10vh;
 	text-align: center;
 	transform: translateY(50%);
 	width: fit-content;
+	margin: 0 auto;
+}
+
+.list {
+	text-align: left;
+	width: max-content;
 	margin: 0 auto;
 }

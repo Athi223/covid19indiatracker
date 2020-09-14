@@ -5,6 +5,7 @@
 ### Credits (API)
 
 <a href="https://api.covid19india.org/">Covid-19 India API</a>
+<a href="https://covid19api.com">Covid-19 API</a>
 
 ### Current Visualizations
 
