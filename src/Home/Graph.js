@@ -7,7 +7,7 @@ export default function Graph(props) {
             <LineChart data={props.data} margin={{ left: 20 }}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="date" />
-                <YAxis scale={props.scale} domain={props.domain} />
+                <YAxis />
                 <Tooltip />
                 <Line type="monotone" dataKey={props.dataKey} stroke={props.stroke} />
             </LineChart>

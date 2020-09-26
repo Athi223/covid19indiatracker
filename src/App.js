@@ -8,69 +8,40 @@ export default function App() {
 	const [ deceased, setDeceased ] = useState([])
 	const [ recovered, setRecovered ] = useState([])
 	const [ tested, setTested ] = useState(0)
-	const [ ready, setReady ] = useState(0)
+	const [ ready, setReady ] = useState(false)
 	const [ type, setType ] = useState(0)
 	const [ states, setStates ] = useState([])
 	const [ districts, setDistricts ] = useState({})
-	const [ world, SetWorld ] = useState({})
+	const [ world, SetWorld ] = useState([])
+	const [ annual_dates, setAnnual_dates ] = useState([])
+	const [ annual_prediction, setAnnual_prediction ] = useState([])
 	useEffect(() => {
-		fetch('https://api.covid19india.org/data.json')
-		.then(rawResponse => rawResponse.json())
+		fetch('/api').then(rawResponse => rawResponse.json())
 		.then(response => {
-			let confirmed = [], active = [], deceased = [], recovered = []
-			response.cases_time_series.forEach(day => {
-				const confirm = day.totalconfirmed
-				const decease = day.totaldeceased
-				const recover = day.totalrecovered
-				confirmed.push({ date: day.date, confirmed: confirm })
-				active.push({ date: day.date, active: (confirm - decease - recover).toString() })
-				deceased.push({ date: day.date, deceased: decease })
-				recovered.push({ date: day.date, recovered: recover })
-			})
-			setConfirmed(confirmed)
-			setActive(active)
-			setDeceased(deceased)
-			setRecovered(recovered)
-			setTested(new Intl.NumberFormat('en-IN').format(response.tested[response.tested.length-1].totalsamplestested))
-			setReady(prev => prev + 1)
 			fetch('https://api.covid19api.com/world/total')
-			.then(rawResponse => rawResponse.json())
-			.then(response => {
+			.then(raw => raw.json())
+			.then(res => {
 				const world = [
-					{ type: 'Confirmed', India: parseInt(confirmed[confirmed.length-1].confirmed), World: response.TotalConfirmed },
-					{ type: 'Active', India: parseInt(active[active.length-1].active), World: (response.TotalConfirmed - response.TotalDeaths - response.TotalRecovered) },
-					{ type: 'Recovered', India: parseInt(recovered[recovered.length-1].recovered), World: response.TotalRecovered },
-					{ type: 'Deceased', India: parseInt(deceased[deceased.length-1].deceased), World: response.TotalDeaths },
+					{ type: 'Confirmed', India: parseInt(response.data.confirmed[response.data.confirmed.length-1].confirmed), World: res.TotalConfirmed },
+					{ type: 'Active', India: parseInt(response.data.active[response.data.active.length-1].active), World: (res.TotalConfirmed - res.TotalDeaths - res.TotalRecovered) },
+					{ type: 'Recovered', India: parseInt(response.data.recovered[response.data.recovered.length-1].recovered), World: res.TotalRecovered },
+					{ type: 'Deceased', India: parseInt(response.data.deceased[response.data.deceased.length-1].deceased), World: res.TotalDeaths },
 				]
 				SetWorld(world)
+				setConfirmed(response.data.confirmed)
+				setActive(response.data.active)
+				setDeceased(response.data.deceased)
+				setRecovered(response.data.recovered)
+				setTested(new Intl.NumberFormat('en-IN').format(response.data.tested))
+				setStates(response.data.states)
+				setDistricts(response.data.districts)
+				setReady(true)
+				setAnnual_dates(response.annual_dates)
+				setAnnual_prediction(response.annual_prediction)
 			})
 		})
-		fetch("https://api.covid19india.org/v4/data.json")
-		.then(rawResponse => rawResponse.json())
-		.then(response => {
-			let states = [[], [], [], [], []], districts = {}
-			for(const stateid in response) {
-				const total =  response[stateid]['total']
-				const types = [ 'confirmed', 'active', 'deceased', 'recovered', 'tested', 'other']
-				const current = [
-					total[types[0]] || 0,
-					(total[types[0]] || 0) - (total[types[2]] || 0) - (total[types[3]] || 0) - (total[types[5]] || 0),
-					total[types[2]] || 0,
-					total[types[3]] || 0,
-					total[types[4]] || 0
-				]
-				if(stateid !== 'TT') {
-					districts[stateid] = response[stateid]['districts']
-					for(let i=0;i<5;++i)
-						states[i].push({state: stateid, [types[i]]: current[i]})
-				}
-			}
-			setStates(states)
-			setDistricts(districts)
-			setReady(prev => prev + 1)
-		})
 	}, [])
-	if(ready === 2)
+	if(ready)
 		return(
 			<AppComponent
 				confirmed={confirmed}
@@ -83,6 +54,8 @@ export default function App() {
 				type={type}
 				world={world}
 				setType={setType}
+				annual_dates={annual_dates}
+				annual_prediction={annual_prediction}
 			/>
 		)
 	else

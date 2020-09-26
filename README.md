@@ -2,6 +2,10 @@
 
 ![Imgur](https://i.imgur.com/Ckiuq6q.png)
 
+### Important
+
+This is just the React frontend code for Flask+React project "Covid-19 India Tracker & Predictor" (Repo: https://github.com/Athi223/covid19tracker_predictor). It wont run without Flask backend due to API path links. This branch was created because the actual Flask+React project includes production build of this branch.
+
 ### Credits (API)
 
 <a href="https://api.covid19india.org/">Covid-19 India API</a>

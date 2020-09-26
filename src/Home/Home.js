@@ -53,13 +53,13 @@ export default function Home(props) {
 						<div className="col-12 col-md-12 col-lg-6 col-xl-6">
 							<h4 style={{ color: '#fd7e14' }}>Confirmed</h4>
 							<div className="m-2 home-graph">
-								<Graph data={props.confirmed} scale="log" domain={[1, 10000000]} dataKey="confirmed" stroke="#fd7e14" />
+								<Graph data={props.confirmed} dataKey="confirmed" stroke="#fd7e14" />
 							</div>
 						</div>
 						<div className="col-12 col-md-12 col-lg-6 col-xl-6">
 							<h4 className="text-primary">Active</h4>
 							<div className="my-2 home-graph">
-								<Graph data={props.active} scale="auto" domain={[1, 1000000]} dataKey="active" stroke="#007bff" />
+								<Graph data={props.active} dataKey="active" stroke="#007bff" />
 							</div>
 						</div>
 					</div>
@@ -68,13 +68,13 @@ export default function Home(props) {
 						<div className="col-12 col-md-12 col-lg-6 col-xl-6">
 							<h4 className="text-danger">Deceased</h4>
 							<div className="my-2 home-graph">
-								<Graph data={props.deceased} scale="log" domain={[1, 500000]} dataKey="deceased" stroke="#dc3545" />
+								<Graph data={props.deceased} dataKey="deceased" stroke="#dc3545" />
 							</div>
 						</div>
 						<div className="col-12 col-md-12 col-lg-6 col-xl-6">
 							<h4 className="text-success">Recovered</h4>
 							<div className="my-2 home-graph">
-								<Graph data={props.recovered} scale="log" domain={[1, 10000000]} dataKey="recovered" stroke="#28a745" />
+								<Graph data={props.recovered} dataKey="recovered" stroke="#28a745" />
 							</div>
 						</div>
 					</div>

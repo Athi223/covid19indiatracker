@@ -4,10 +4,11 @@ import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-do
 import Home from './Home/Home'
 import StateWise from './StateWise/StateWise'
 import DistrictWise from './DistrictWise/DistrictWise'
+import Prediction from './Prediction/Prediction'
 import About from './About'
 
 export default function AppComponent(props) {
-	const titles = [ 'Covid-19 India Tracker', 'State Wise', 'District Wise', 'About', ]
+	const titles = [ 'Covid-19 India Tracker', 'State Wise', 'District Wise', 'Prediction', 'About' ]
 	return (
 		<Router>
 			<div>
@@ -16,7 +17,8 @@ export default function AppComponent(props) {
 						<NavLink exact activeClassName="active" className="nav-item nav-link h5" to="/">{titles[0]}</NavLink>
 						<NavLink activeClassName="active" className="nav-item nav-link h5" to="/statewise">{titles[1]}</NavLink>
 						<NavLink activeClassName="active" className="nav-item nav-link h5" to="/districtwise">{titles[2]}</NavLink>
-						<NavLink activeClassName="active" className="nav-item nav-link h5" to="/about">{titles[3]}</NavLink>
+						<NavLink activeClassName="active" className="nav-item nav-link h5" to="/prediction">{titles[3]}</NavLink>
+						<NavLink activeClassName="active" className="nav-item nav-link h5" to="/about">{titles[4]}</NavLink>
 					</div>
 				</nav>
 				<Switch>
@@ -28,6 +30,9 @@ export default function AppComponent(props) {
 					</Route>
 					<Route path="/statewise">
 						<StateWise states={props.states[props.type]} type={props.type} setType={props.setType} />
+					</Route>
+					<Route path="/prediction">
+						<Prediction	annual_dates={props.annual_dates} annual_prediction={props.annual_prediction} />
 					</Route>
 					<Route path="/">
 						<Home
