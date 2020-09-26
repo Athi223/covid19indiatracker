@@ -17,6 +17,7 @@ This is just the React frontend code for Flask+React project "Covid-19 India Tra
     <li>Dashboard (Nationwide Data)</li>
     <li>State Wise data</li>
     <li>District Wise data</li>
+    <li>Prediction</li>
     <li>About (Credits)</li>
 </ul>
 
