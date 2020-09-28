@@ -27,7 +27,7 @@ export default function AppComponent(props) {
 							<NavLink activeClassName="active" className="nav-item nav-link h5" to="/about">{titles[4]}</NavLink>
 						</div>
 					</div>
-					<div className="ml-auto mr-4" style={{ cursor: "pointer" }} onClick={halfmoon.toggleDarkMode}>🌓</div>
+					<div className="ml-auto mr-4" style={{ cursor: "pointer" }} onClick={() => halfmoon.toggleDarkMode()}>🌓</div>
 				</nav>
 				<Switch>
 					<Route path="/about">
