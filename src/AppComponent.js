@@ -6,20 +6,28 @@ import StateWise from './StateWise/StateWise'
 import DistrictWise from './DistrictWise/DistrictWise'
 import Prediction from './Prediction/Prediction'
 import About from './About'
+import 'halfmoon/css/halfmoon.min.css'
+import halfmoon from 'halfmoon'
 
 export default function AppComponent(props) {
 	const titles = [ 'Covid-19 India Tracker', 'State Wise', 'District Wise', 'Prediction', 'About' ]
 	return (
 		<Router>
 			<div>
-				<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-					<div className="navbar-nav">
-						<NavLink exact activeClassName="active" className="nav-item nav-link h5" to="/">{titles[0]}</NavLink>
-						<NavLink activeClassName="active" className="nav-item nav-link h5" to="/statewise">{titles[1]}</NavLink>
-						<NavLink activeClassName="active" className="nav-item nav-link h5" to="/districtwise">{titles[2]}</NavLink>
-						<NavLink activeClassName="active" className="nav-item nav-link h5" to="/prediction">{titles[3]}</NavLink>
-						<NavLink activeClassName="active" className="nav-item nav-link h5" to="/about">{titles[4]}</NavLink>
+				<nav className="navbar navbar-expand-lg navbar-dark font-size-24" style={{ backgroundColor: '#250940' }}>
+					<div class="navbar-toggler" onClick={() => document.querySelector('.collapse').classList.toggle('show')}>
+						<span class="navbar-toggler-icon"></span>
 					</div>
+					<div class="collapse navbar-collapse">
+						<div className="navbar-nav">
+							<NavLink exact activeClassName="active" className="nav-item nav-link h5" to="/">{titles[0]}</NavLink>
+							<NavLink activeClassName="active" className="nav-item nav-link h5" to="/statewise">{titles[1]}</NavLink>
+							<NavLink activeClassName="active" className="nav-item nav-link h5" to="/districtwise">{titles[2]}</NavLink>
+							<NavLink activeClassName="active" className="nav-item nav-link h5" to="/prediction">{titles[3]}</NavLink>
+							<NavLink activeClassName="active" className="nav-item nav-link h5" to="/about">{titles[4]}</NavLink>
+						</div>
+					</div>
+					<div className="ml-auto mr-4" style={{ cursor: "pointer" }} onClick={halfmoon.toggleDarkMode}>🌓</div>
 				</nav>
 				<Switch>
 					<Route path="/about">
@@ -32,7 +40,12 @@ export default function AppComponent(props) {
 						<StateWise states={props.states[props.type]} type={props.type} setType={props.setType} />
 					</Route>
 					<Route path="/prediction">
-						<Prediction	annual_dates={props.annual_dates} annual_prediction={props.annual_prediction} />
+						<Prediction
+							annual_dates={props.annual_dates}
+							annual_prediction={props.annual_prediction}
+							date={props.date}
+							setDate={props.setDate}
+						/>
 					</Route>
 					<Route path="/">
 						<Home

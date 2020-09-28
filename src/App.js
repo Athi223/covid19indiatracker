@@ -13,8 +13,10 @@ export default function App() {
 	const [ states, setStates ] = useState([])
 	const [ districts, setDistricts ] = useState({})
 	const [ world, SetWorld ] = useState([])
+	// Prediction
 	const [ annual_dates, setAnnual_dates ] = useState([])
 	const [ annual_prediction, setAnnual_prediction ] = useState([])
+	const [date, setDate] = useState(null)
 	useEffect(() => {
 		fetch('/api').then(rawResponse => rawResponse.json())
 		.then(response => {
@@ -56,6 +58,8 @@ export default function App() {
 				setType={setType}
 				annual_dates={annual_dates}
 				annual_prediction={annual_prediction}
+				date={date}
+				setDate={setDate}
 			/>
 		)
 	else
