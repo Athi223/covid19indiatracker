@@ -16,7 +16,9 @@ export default function App() {
 	// Prediction
 	const [ annual_dates, setAnnual_dates ] = useState([])
 	const [ annual_prediction, setAnnual_prediction ] = useState([])
-	const [date, setDate] = useState(null)
+	const [ date, setDate ] = useState('')
+	// Clustering
+	const [ clusters, setClusters ] = useState({})
 	useEffect(() => {
 		fetch('/api').then(rawResponse => rawResponse.json())
 		.then(response => {
@@ -39,6 +41,7 @@ export default function App() {
 				setDistricts(response.data.districts)
 				setAnnual_dates(response.annual_dates)
 				setAnnual_prediction(response.annual_prediction)
+				setClusters(response.clusters)
 				setReady(true)
 			})
 		})
@@ -60,6 +63,7 @@ export default function App() {
 				annual_prediction={annual_prediction}
 				date={date}
 				setDate={setDate}
+				clusters={clusters}
 			/>
 		)
 	else

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Bar, ResponsiveContainer } from 'recharts'
 import './StateWise.css'
 import { states } from '../States'
@@ -6,7 +6,7 @@ import nFormatter from '../nFormatter'
 
 export default function StateWise(props) {
 	const colors = [ '#fd7e14', '#007bff', '#dc3545', '#28a745', '#6610f2' ]
-	React.useEffect(() => {
+	useEffect(() => {
 		document.title = "State Wise"
 	}, [])
     return(
