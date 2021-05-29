@@ -12,7 +12,7 @@ export default function App() {
 	const [ type, setType ] = useState(0)
 	const [ states, setStates ] = useState([])
 	const [ districts, setDistricts ] = useState({})
-	const [ world, SetWorld ] = useState({})
+	const [ world, SetWorld ] = useState([])
 	useEffect(() => {
 		fetch('https://api.covid19india.org/data.json')
 		.then(rawResponse => rawResponse.json())
@@ -48,20 +48,21 @@ export default function App() {
 		fetch("https://api.covid19india.org/v4/data.json")
 		.then(rawResponse => rawResponse.json())
 		.then(response => {
-			let states = [[], [], [], [], []], districts = {}
+			let states = [[], [], [], [], [], []], districts = {}
 			for(const stateid in response) {
 				const total =  response[stateid]['total']
-				const types = [ 'confirmed', 'active', 'deceased', 'recovered', 'tested', 'other']
+				const types = [ 'confirmed', 'active', 'deceased', 'recovered', 'tested', 'vaccinated', 'other' ]
 				const current = [
 					total[types[0]] || 0,
-					(total[types[0]] || 0) - (total[types[2]] || 0) - (total[types[3]] || 0) - (total[types[5]] || 0),
+					(total[types[0]] || 0) - (total[types[2]] || 0) - (total[types[3]] || 0) - (total[types[6]] || 0),
 					total[types[2]] || 0,
 					total[types[3]] || 0,
-					total[types[4]] || 0
+					total[types[4]] || 0,
+					total[types[5]] || 0
 				]
 				if(stateid !== 'TT') {
 					districts[stateid] = response[stateid]['districts']
-					for(let i=0;i<5;++i)
+					for(let i=0;i<6;++i)
 						states[i].push({state: stateid, [types[i]]: current[i]})
 				}
 			}

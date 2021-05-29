@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { states } from '../States'
 
 export default function StateWise(props) {
-	const colors = [ '#fd7e14', '#007bff', '#dc3545', '#28a745', '#6610f2' ]
+	const colors = [ '#fd7e14', '#007bff', '#dc3545', '#28a745', '#6610f2', '#f8bb04' ]
 	React.useEffect(() => {
 		document.title = "State Wise"
 	}, [])
@@ -20,7 +20,7 @@ export default function StateWise(props) {
 					<XAxis dataKey="state" />
 					<YAxis />
 					<Tooltip labelFormatter={stateid => states[stateid]} formatter={value => new Intl.NumberFormat('en-IN').format(value)} />
-					<Bar dataKey={['confirmed', 'active', 'deceased', 'recovered', 'tested'][props.type]} fill={colors[props.type]} />
+					<Bar dataKey={['confirmed', 'active', 'deceased', 'recovered', 'tested', 'vaccinated'][props.type]} fill={colors[props.type]} />
 				</BarChart>
 			</ResponsiveContainer>
 		</div>
@@ -29,7 +29,7 @@ export default function StateWise(props) {
 
 function Buttons(props) {
 	let styles = []
-	for(let i=0;i<5;++i) {
+	for(let i=0;i<6;++i) {
 		styles.push({
 			backgroundColor: props.colors[i] + (props.type === i ? '67' : '44'),
 			color: props.colors[i] + (props.type === i ? '' : 'aa'),
@@ -37,10 +37,7 @@ function Buttons(props) {
 		})
 	}
 	return(
-		<div className="row my-4 text-center" style={{ backgroundColor: 'whitesmoke', borderRadius: 14 }}>
-			<div className="col-6 col-md-4 col-lg-2 col-xl-2">
-				<div className="p-2 my-3 font-weight-bold" style={{ fontSize: 20 }}>Category :</div>
-			</div>
+		<div className="row my-3 text-center" style={{ backgroundColor: 'whitesmoke', borderRadius: 14 }}>
 			<div className="col-6 col-md-4 col-lg-2 col-xl-2">
 				<div className="cases-type p-2 my-3" style={styles[0]} onClick={() => props.setType(0)}>Confirmed</div>
 			</div>
@@ -55,6 +52,9 @@ function Buttons(props) {
 			</div>
 			<div className="col-6 col-md-4 col-lg-2 col-xl-2">
 				<div className="cases-type p-2 my-3" style={styles[4]} onClick={() => props.setType(4)}>Tested</div>
+			</div>
+			<div className="col-6 col-md-4 col-lg-2 col-xl-2">
+				<div className="cases-type p-2 my-3" style={styles[5]} onClick={() => props.setType(5)}>Vaccinated</div>
 			</div>
 		</div>
 	)

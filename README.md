@@ -1,6 +1,14 @@
 ## Dashboard
 
-![Imgur](https://i.imgur.com/Ckiuq6q.png)
+![ImgBB](https://i.ibb.co/QCYYsdc/home.png)
+
+## StateWise
+
+![ImgBB](https://i.ibb.co/2nrnDK6/statewise.png)
+
+## DistrictWise
+
+![ImgBB](https://i.ibb.co/zfqzrNX/districtwise.png)
 
 ### Credits (API)
 
@@ -15,6 +23,14 @@
     <li>District Wise data</li>
     <li>About (Credits)</li>
 </ul>
+
+### Categories visualized in:
+
+| Page          | Confirmed | Active  | Deceased | Recovered | Tested  | Vaccinated | Worldwide |
+| ------------- | --------- | ------- | -------- | --------- | ------- | ---------- | --------- |
+| Dashboard     | &check;   | &check; | &check;  | &check;   | &check; | &cross;    | &check;   |
+| State Wise    | &check;   | &check; | &check;  | &check;   | &check; | &check;    | &cross;   |
+| District Wise | &check;   | &check; | &check;  | &check;   | &check; | &check;    | &cross;   |
 
 <hr />
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
