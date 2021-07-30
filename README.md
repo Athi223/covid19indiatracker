@@ -26,11 +26,11 @@
 
 ### Categories visualized in:
 
-| Page          | Confirmed | Active  | Deceased | Recovered | Tested  | Vaccinated | Worldwide |
-| ------------- | --------- | ------- | -------- | --------- | ------- | ---------- | --------- |
-| Dashboard     | &check;   | &check; | &check;  | &check;   | &check; | &cross;    | &check;   |
-| State Wise    | &check;   | &check; | &check;  | &check;   | &check; | &check;    | &cross;   |
-| District Wise | &check;   | &check; | &check;  | &check;   | &check; | &check;    | &cross;   |
+| Page          | Confirmed | Active  | Deceased | Recovered | Tested  | 1 Dose  | 2 Doses | Worldwide |
+| ------------- | --------- | ------- | -------- | --------- | ------- | ------- | ------- | --------- |
+| Dashboard     | &check;   | &check; | &check;  | &check;   | &check; | &cross; | &cross; | &check;   |
+| State Wise    | &check;   | &check; | &check;  | &check;   | &check; | &check; | &check; | &cross;   |
+| District Wise | &check;   | &check; | &check;  | &check;   | &check; | &check; | &check; | &cross;   |
 
 <hr />
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

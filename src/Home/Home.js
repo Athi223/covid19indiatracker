@@ -12,36 +12,36 @@ export default function Home(props) {
 		<div className="container-fluid">
 			<div className="row text-center">
 				<div className="col-12 col-md-6 col-lg-4 col-xl-2">
-					<div className="mx-2 my-4 bg-info cases-types h2 p-4 d-flex align-items-center">
+					<div className="mx-2 my-4 bg-info cases-types h4 p-4 d-flex align-items-center">
 						<span>Covid-19 India Tracker</span>
 					</div>
 				</div>
 				<div className="col-12 col-md-6 col-lg-4 col-xl-2">
-					<div className="mx-2 my-4 cases-types h3 p-4 d-flex flex-column justify-content-around" style ={{ backgroundColor: '#fd7e14' }}>
+					<div className="mx-2 my-4 cases-types h4 p-4 d-flex flex-column justify-content-around" style ={{ backgroundColor: '#fd7e14' }}>
 						<span>Confirmed</span>
 						<span>{new Intl.NumberFormat('en-IN').format(props.confirmed[props.confirmed.length-1].confirmed)}</span>
 					</div>
 				</div>
 				<div className="col-12 col-md-6 col-lg-4 col-xl-2">
-					<div className="mx-2 my-4 bg-primary cases-types h3 p-4 d-flex flex-column justify-content-around">
+					<div className="mx-2 my-4 bg-primary cases-types h4 p-4 d-flex flex-column justify-content-around">
 						<span>Active</span>
 						<span>{new Intl.NumberFormat('en-IN').format(props.active[props.active.length-1].active)}</span>
 					</div>
 				</div>
 				<div className="col-12 col-md-6 col-lg-4 col-xl-2">
-					<div className="mx-2 my-4 bg-danger cases-types h3 p-4 d-flex flex-column justify-content-around">
+					<div className="mx-2 my-4 bg-danger cases-types h4 p-4 d-flex flex-column justify-content-around">
 						<span>Deceased</span>
 						<span>{new Intl.NumberFormat('en-IN').format(props.deceased[props.deceased.length-1].deceased)}</span>
 					</div>
 				</div>
 				<div className="col-12 col-md-6 col-lg-4 col-xl-2">
-					<div className="mx-2 my-4 bg-success cases-types h3 p-4 d-flex flex-column justify-content-around">
+					<div className="mx-2 my-4 bg-success cases-types h4 p-4 d-flex flex-column justify-content-around">
 						<span>Recovered</span>
 						<span>{new Intl.NumberFormat('en-IN').format(props.recovered[props.recovered.length-1].recovered)}</span>
 					</div>
 				</div>
 				<div className="col-12 col-md-6 col-lg-4 col-xl-2">
-					<div className="mx-2 my-4 cases-types h3 p-4 d-flex flex-column justify-content-around" style ={{ backgroundColor: '#6610f2' }}>
+					<div className="mx-2 my-4 cases-types h4 p-4 d-flex flex-column justify-content-around" style ={{ backgroundColor: '#6610f2' }}>
 						<span>Tested</span>
 						<span>{props.tested}</span>
 					</div>
