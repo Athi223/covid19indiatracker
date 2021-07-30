@@ -1,14 +1,14 @@
 ## Dashboard
 
-![ImgBB](https://i.ibb.co/QCYYsdc/home.png)
+![Dashboard](https://i.ibb.co/QCYYsdc/home.png)
 
 ## StateWise
 
-![ImgBB](https://i.ibb.co/2nrnDK6/statewise.png)
+![StateWise](https://i.ibb.co/jrrWtzG/statewise.png)
 
 ## DistrictWise
 
-![ImgBB](https://i.ibb.co/zfqzrNX/districtwise.png)
+![DistrictWise](https://i.ibb.co/NVHgtnH/districtwise.png)
 
 ### Credits (API)
 
