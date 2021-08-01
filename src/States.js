@@ -33,5 +33,6 @@ export const states = {
     'DL': 'Delhi',
     'JK': 'Jammu and Kashmir',
     'LA': 'Ladakh',
+    'LD': 'Lakshadweep',
     'PY': 'Puducherry' 
 }

@@ -45,7 +45,7 @@ export default function App() {
 				SetWorld(world)
 			})
 		})
-		fetch("https://api.covid19india.org/v4/data.json")
+		fetch("https://api.covid19india.org/v4/min/data.min.json")
 		.then(rawResponse => rawResponse.json())
 		.then(response => {
 			let states = [[], [], [], [], [], [], []], districts = {}
