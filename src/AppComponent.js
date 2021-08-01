@@ -4,24 +4,29 @@ import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-do
 import Home from './Home/Home'
 import StateWise from './StateWise/StateWise'
 import DistrictWise from './DistrictWise/DistrictWise'
-import About from './About'
+import Vaccinations from './Vaccinations/Vaccinations';
+import About from './About/About'
 
 export default function AppComponent(props) {
-	const titles = [ 'Covid-19 India Tracker', 'State Wise', 'District Wise', 'About', ]
+	const titles = [ 'Covid-19 India Tracker', 'State Wise', 'District Wise', 'Vaccinations', 'About' ]
 	return (
 		<Router>
 			<div>
 				<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
 					<div className="navbar-nav">
-						<NavLink exact activeClassName="active" className="nav-item nav-link h5" to="/">{titles[0]}</NavLink>
+						<NavLink activeClassName="active" className="nav-item nav-link h5" to="/" exact>{titles[0]}</NavLink>
 						<NavLink activeClassName="active" className="nav-item nav-link h5" to="/statewise">{titles[1]}</NavLink>
 						<NavLink activeClassName="active" className="nav-item nav-link h5" to="/districtwise">{titles[2]}</NavLink>
-						<NavLink activeClassName="active" className="nav-item nav-link h5" to="/about">{titles[3]}</NavLink>
+						<NavLink activeClassName="active" className="nav-item nav-link h5" to="/vaccinations">{titles[3]}</NavLink>
+						<NavLink activeClassName="active" className="nav-item nav-link h5" to="/about">{titles[4]}</NavLink>
 					</div>
 				</nav>
 				<Switch>
 					<Route path="/about">
 						<About />
+					</Route>
+					<Route path="/vaccinations">
+						<Vaccinations vaccinations={props.vaccinations} />
 					</Route>
 					<Route path="/districtwise">
 						<DistrictWise districts={props.districts} />

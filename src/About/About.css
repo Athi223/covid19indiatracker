@@ -1,6 +1,6 @@
  /* unvisited link */
 a:link, a:visited, a:active {
-	color: #ffff4d;
+	color: gold;
 }
 
 /* mouse over link */
@@ -9,14 +9,14 @@ a:hover {
 } 
 
 .about {
-	background: radial-gradient(ellipse at center, #BB1AD0cc, #4771C1cc);
+	background: radial-gradient(circle, rgb(65, 102, 202) -60%, rgb(0, 0, 0) 75%);
 	border: 10px double orangered;
 	border-radius: 16px;
 	color: #ffff4d;
 	text-shadow: 2px 2px 8px black;
 	padding: 10vh;
 	text-align: center;
-	transform: translateY(50%);
+	transform: translateY(15%);
 	width: fit-content;
 	margin: 0 auto;
 }

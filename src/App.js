@@ -8,6 +8,7 @@ export default function App() {
 	const [ deceased, setDeceased ] = useState([])
 	const [ recovered, setRecovered ] = useState([])
 	const [ tested, setTested ] = useState(0)
+	const [ vaccinations, setVaccinations ] = useState({})
 	const [ ready, setReady ] = useState(0)
 	const [ type, setType ] = useState(0)
 	const [ states, setStates ] = useState([])
@@ -27,6 +28,37 @@ export default function App() {
 				deceased.push({ date: day.date, deceased: decease })
 				recovered.push({ date: day.date, recovered: recover })
 			})
+			const _vaccinations = {
+				'total': response.tested[response.tested.length - 1]['totalindividualsvaccinated'],
+				'first_doses': {
+					'total': response.tested[response.tested.length - 1]['firstdoseadministered'],
+					'stats': [
+						{ name: 'Frontline Workers', value: parseInt(response.tested[response.tested.length - 1]['frontlineworkersvaccinated1stdose']) },
+						{ name: 'Healthcare Workers', value: parseInt(response.tested[response.tested.length - 1]['healthcareworkersvaccinated1stdose']) },
+						{ name: 'Under 45 Years', value: parseInt(response.tested[response.tested.length - 1]['years1stdose']) },
+						{ name: 'Over 45 Years', value: parseInt(response.tested[response.tested.length - 1]['over45years1stdose']) },
+						{ name: 'Over 60 Years', value: parseInt(response.tested[response.tested.length - 1]['over60years1stdose']) },
+					]
+				},
+				'second_doses': {
+					'total': response.tested[response.tested.length - 1]['seconddoseadministered'],
+					'stats': [
+						{ name: 'Frontline Workers', value: parseInt(response.tested[response.tested.length - 1]['frontlineworkersvaccinated2nddose']) },
+						{ name: 'Healthcare Workers', value: parseInt(response.tested[response.tested.length - 1]['healthcareworkersvaccinated2nddose']) },
+						{ name: 'Under 45 Years', value: parseInt(response.tested[response.tested.length - 1]['years2nddose']) },
+						{ name: 'Over 45 Years', value: parseInt(response.tested[response.tested.length - 1]['over45years2nddose']) },
+						{ name: 'Over 60 Years', value: parseInt(response.tested[response.tested.length - 1]['over60years2nddose']) },
+					]
+				},
+				'registrations': {
+					'total': response.tested[response.tested.length - 1]['totalindividualsregistered'],
+					'stats': [
+						{ name: '18-45 Years', value: parseInt(response.tested[response.tested.length - 1]['registration18-45years']) },
+						{ name: 'Above 45 Years', value: parseInt(response.tested[response.tested.length - 1]['registrationabove45years']) },
+					]
+				}
+			}
+			setVaccinations(_vaccinations)
 			setConfirmed(confirmed)
 			setActive(active)
 			setDeceased(deceased)
@@ -51,15 +83,15 @@ export default function App() {
 			let states = [[], [], [], [], [], [], []], districts = {}
 			for(const stateid in response) {
 				const total =  response[stateid]['total']
-				const types = [ 'confirmed', 'active', 'deceased', 'recovered', 'tested', 'vaccinated1', 'vaccinated2' ]
+				const types = [ 'confirmed', 'active', 'deceased', 'recovered', 'tested', '1 Dose', '2 Doses' ]
 				const current = [
 					total[types[0]] || 0,
 					(total[types[0]] || 0) - (total[types[2]] || 0) - (total[types[3]] || 0) - (total['other'] || 0),
 					total[types[2]] || 0,
 					total[types[3]] || 0,
 					total[types[4]] || 0,
-					total[types[5]] || 0,
-					total[types[6]] || 0
+					total['vaccinated1'] || 0,
+					total['vaccinated2'] || 0
 				]
 				if(stateid !== 'TT') {
 					districts[stateid] = response[stateid]['districts']
@@ -82,6 +114,7 @@ export default function App() {
 				tested={tested}
 				states={states}
 				districts={districts}
+				vaccinations={vaccinations}
 				type={type}
 				world={world}
 				setType={setType}

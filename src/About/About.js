@@ -1,10 +1,12 @@
 import React from 'react'
 import './About.css'
+import Coronavirus from './Coronavirus'
 
 export default function About() {
 	return(
 		<div className="about">
-			<h1>Covid-19 India Tracker</h1><br />
+			<Coronavirus />
+			<h1 className="mt-3">Covid-19 India Tracker</h1><br />
 			<h3>Made by <u><i><a href="github.com/Athi223" target="_blank" rel="noopener noreferrer">Athi223</a></i></u></h3><br />
 			<h5>Credits: 
 				<ul className="list">

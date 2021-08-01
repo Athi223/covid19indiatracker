@@ -20,7 +20,7 @@ export default function StateWise(props) {
 					<XAxis dataKey="state" />
 					<YAxis />
 					<Tooltip labelFormatter={stateid => states[stateid]} formatter={value => new Intl.NumberFormat('en-IN').format(value)} />
-					<Bar dataKey={['confirmed', 'active', 'deceased', 'recovered', 'tested', 'vaccinated1', 'vaccinated2'][props.type]} fill={colors[props.type]} />
+					<Bar dataKey={['confirmed', 'active', 'deceased', 'recovered', 'tested', '1 Dose', '2 Doses'][props.type]} fill={colors[props.type]} />
 				</BarChart>
 			</ResponsiveContainer>
 		</div>

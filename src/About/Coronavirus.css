@@ -1,0 +1,134 @@
+.animation-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.covid-19 { 
+	width: 200px;
+	margin-top: -100px;
+	animation-name: float;
+	animation-duration: 1s;
+	animation-direction: alternate;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+}
+
+.shadow {
+	width: 100px;
+	height: 10px;
+	background:slategrey;
+	border-radius: 70%;
+	opacity: 1;
+	filter: blur(3px);
+	animation-name: animate-shadow;
+	animation-duration: 1s;
+	animation-direction: alternate;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+}
+
+g.evelope {
+	animation-name: rotate;
+	transform-origin: 100px 105px;
+	animation-duration: 2s;
+	animation-direction: alternate;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+}
+
+ellipse.left-eyeball,
+ellipse.right-eyeball {
+	animation-name: moveEyeBalls;
+	transform-origin: 50% 50%;
+	animation-duration: 3s;
+	animation-direction: normal;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+}
+
+.left-eyebrows,
+.right-eyebrows {
+	animation-name: moveEyebrows;
+	transform-origin: 50% 50%;
+	animation-duration: 1s;
+	animation-direction: alternate;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+}
+
+.mouth {
+	animation-name: moveMouth;
+	transform-origin: 50% 50%;
+	animation-duration: 2s;
+	animation-direction: alternate;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+}
+
+@keyframes moveMouth {
+	
+	0% {
+		transform: rotate(0deg);
+	} 100% {
+		transform: rotate(12deg);
+	}
+
+}
+
+@keyframes moveEyebrows {
+	
+	0% {
+		transform: translateY(0px);
+	} 100% {
+		transform: translateY(-1px);
+	}
+
+}
+
+@keyframes moveEyeBalls {
+	
+	0% {
+		transform: translateX(0px);
+	} 25% {
+		transform: translateX(2px);
+	} 50%{
+		transform: translateX(-2px);
+	} 75%{
+		transform: translateX(-2px);
+	} 100% {
+		transform: translateX(0px);
+	}
+
+}
+
+@keyframes float {
+	
+	0% {
+		transform: translateY(0px);
+	} 100% {
+		transform: translateY(20px);
+	}
+}
+
+@keyframes animate-shadow {
+	
+	0% {
+		transform: scale(1);
+	} 100% {
+		transform: scale(1.2);
+	}
+}
+
+@keyframes rotate {
+	
+	0% {
+		transform: rotate(0deg);
+	} 50% {
+		transform: rotate(4deg);
+	} 100% {
+		transform: rotate(0deg);
+	}
+	
+}
