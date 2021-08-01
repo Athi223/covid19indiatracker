@@ -1,3 +1,7 @@
+# Covid-19 India Tracker
+
+Project is live at <a href="https://athi223.github.io/covid19indiatracker/">Covid-19 India Tracker</a>
+
 ## Dashboard
 
 ![Dashboard](https://i.ibb.co/zQmCWSH/dashboard.png)
