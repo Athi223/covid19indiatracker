@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './Vaccinations.css'
 import PieGraph from './PieGraph'
 import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Bar, ResponsiveContainer, LabelList } from 'recharts'
 
 export default function Vaccinations(props) {
+	useEffect(() => {
+		document.title = "Vaccinations"
+	}, [])
 	const vaccinations_vs_registrations = [
 		{
 			'name': "Vaccinations V/S Registrations",

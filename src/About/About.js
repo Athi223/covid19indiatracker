@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './About.css'
 import Coronavirus from './Coronavirus'
 
 export default function About() {
+	useEffect(() => {
+		document.title = "About"
+	}, [])
 	return(
 		<div className="about">
 			<Coronavirus />
