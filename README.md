@@ -1,14 +1,18 @@
 ## Dashboard
 
-![Dashboard](https://i.ibb.co/QCYYsdc/home.png)
+![Dashboard](https://i.ibb.co/zQmCWSH/dashboard.png)
 
 ## StateWise
 
-![StateWise](https://i.ibb.co/jrrWtzG/statewise.png)
+![StateWise](https://i.ibb.co/3CLDL2q/statewise.png)
 
 ## DistrictWise
 
-![DistrictWise](https://i.ibb.co/NVHgtnH/districtwise.png)
+![DistrictWise](https://i.ibb.co/89qnHF4/districtwise.png)
+
+## Vaccinations
+
+![Vaccinations](https://i.ibb.co/tmNMZGd/vaccinations.png)
 
 ### Credits (API)
 
@@ -18,9 +22,10 @@
 ### Current Visualizations
 
 <ul>
-    <li>Dashboard (Nationwide Data)</li>
-    <li>State Wise data</li>
-    <li>District Wise data</li>
+    <li>Dashboard (Nationwide Stats)</li>
+    <li>State Wise Stats</li>
+    <li>District Wise Stats</li>
+    <li>Vaccinations Stats</li>
     <li>About (Credits)</li>
 </ul>
 
@@ -31,6 +36,7 @@
 | Dashboard     | &check;   | &check; | &check;  | &check;   | &check; | &cross; | &cross; | &check;   |
 | State Wise    | &check;   | &check; | &check;  | &check;   | &check; | &check; | &check; | &cross;   |
 | District Wise | &check;   | &check; | &check;  | &check;   | &check; | &check; | &check; | &cross;   |
+| Vaccinations  | &cross;   | &cross; | &cross;  | &cross;   | &cross; | &check; | &check; | &cross;   |
 
 <hr />
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
