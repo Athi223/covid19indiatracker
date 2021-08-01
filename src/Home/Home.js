@@ -48,7 +48,7 @@ export default function Home(props) {
 				</div>
 			</div>
 			<div className="row text-center">
-				<div className="col-12 col-md-12 col-lg-12 col-xl-9">
+				<div className="col-12 col-md-12 col-lg-12 col-xl-8">
 					<div className="row text-center">
 						<div className="col-12 col-md-12 col-lg-6 col-xl-6">
 							<h4 style={{ color: '#fd7e14' }}>Confirmed</h4>
@@ -79,10 +79,10 @@ export default function Home(props) {
 						</div>
 					</div>
 				</div>
-				<div className="col-12 col-md-12 col-lg-12 col-xl-3">
+				<div className="col-12 col-md-12 col-lg-12 col-xl-4">
 					<div className="m-2" style={{ height: "60vh" }}>
 						<ResponsiveContainer>
-							<RadarChart data={props.world} margin={{ left: 20, right: 20 }} startAngle={35} endAngle={-325}>
+							<RadarChart data={props.world} startAngle={35} endAngle={-325}>
 								<PolarGrid />
 								<PolarAngleAxis dataKey="type"/>
 								<PolarRadiusAxis scale="sqrt" />

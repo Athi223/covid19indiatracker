@@ -38,25 +38,25 @@ function Buttons(props) {
 	}
 	return(
 		<div className="row my-3 text-center" style={{ backgroundColor: 'whitesmoke', borderRadius: 14 }}>
-			<div className="col-12 col-md">
+			<div className="col-md">
 				<div className="cases-type p-2 my-3" style={styles[0]} onClick={() => props.setType(0)}>Confirmed</div>
 			</div>
-			<div className="col-12 col-md">
+			<div className="col-md">
 				<div className="cases-type p-2 my-3" style={styles[1]} onClick={() => props.setType(1)}>Active</div>
 			</div>
-			<div className="col-12 col-md">
+			<div className="col-md">
 				<div className="cases-type p-2 my-3" style={styles[2]} onClick={() => props.setType(2)}>Deceased</div>
 			</div>
-			<div className="col-12 col-md">
+			<div className="col-md">
 				<div className="cases-type p-2 my-3" style={styles[3]} onClick={() => props.setType(3)}>Recovered</div>
 			</div>
-			<div className="col-12 col-md">
+			<div className="col-md">
 				<div className="cases-type p-2 my-3" style={styles[4]} onClick={() => props.setType(4)}>Tested</div>
 			</div>
-			<div className="col-12 col-md">
+			<div className="col-md">
 				<div className="cases-type p-2 my-3" style={styles[5]} onClick={() => props.setType(5)}>1 Dose</div>
 			</div>
-			<div className="col-12 col-md">
+			<div className="col-md">
 				<div className="cases-type p-2 my-3" style={styles[6]} onClick={() => props.setType(6)}>2 Doses</div>
 			</div>
 		</div>
