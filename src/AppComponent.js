@@ -10,7 +10,7 @@ import About from './About/About'
 export default function AppComponent(props) {
 	const titles = [ 'Covid-19 India Tracker', 'State Wise', 'District Wise', 'Vaccinations', 'About' ]
 	return (
-		<Router basename={process.env.PUBLIC_URL}>
+		<Router>
 			<div>
 				<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
 					<div className="navbar-nav">
