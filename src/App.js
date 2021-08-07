@@ -28,33 +28,52 @@ export default function App() {
 				deceased.push({ date: day.date, deceased: decease })
 				recovered.push({ date: day.date, recovered: recover })
 			})
+			response.tested.reverse()												// reverse the vaccinations data to get latest first
+			const data = response.tested.find(e => 
+				parseInt(e['totalindividualsvaccinated']) &&
+				parseInt(e['firstdoseadministered']) &&
+				parseInt(e['frontlineworkersvaccinated1stdose']) &&
+				parseInt(e['healthcareworkersvaccinated1stdose']) &&
+				parseInt(e['years1stdose']) &&
+				parseInt(e['over45years1stdose']) &&
+				parseInt(e['over60years1stdose']) &&
+				parseInt(e['seconddoseadministered']) &&							// Find the latest vaccinations data which has
+				parseInt(e['frontlineworkersvaccinated2nddose']) &&					// all the required stats as valid integers
+				parseInt(e['healthcareworkersvaccinated2nddose']) &&
+				parseInt(e['years2nddose']) &&
+				parseInt(e['over45years2nddose']) &&
+				parseInt(e['over60years2nddose']) &&
+				parseInt(e['totalindividualsregistered']) &&
+				parseInt(e['registration18-45years']) &&
+				parseInt(e['registrationabove45years'])
+			)
 			const _vaccinations = {
-				'total': response.tested[response.tested.length - 1]['totalindividualsvaccinated'],
+				'total': data['totalindividualsvaccinated'],
 				'first_doses': {
-					'total': response.tested[response.tested.length - 1]['firstdoseadministered'],
+					'total': data['firstdoseadministered'],
 					'stats': [
-						{ name: 'Frontline Workers', value: parseInt(response.tested[response.tested.length - 1]['frontlineworkersvaccinated1stdose']) },
-						{ name: 'Healthcare Workers', value: parseInt(response.tested[response.tested.length - 1]['healthcareworkersvaccinated1stdose']) },
-						{ name: 'Under 45 Years', value: parseInt(response.tested[response.tested.length - 1]['years1stdose']) },
-						{ name: 'Over 45 Years', value: parseInt(response.tested[response.tested.length - 1]['over45years1stdose']) },
-						{ name: 'Over 60 Years', value: parseInt(response.tested[response.tested.length - 1]['over60years1stdose']) },
+						{ name: 'Frontline Workers', value: parseInt(data['frontlineworkersvaccinated1stdose']) },
+						{ name: 'Healthcare Workers', value: parseInt(data['healthcareworkersvaccinated1stdose']) },
+						{ name: 'Under 45 Years', value: parseInt(data['years1stdose']) },
+						{ name: 'Over 45 Years', value: parseInt(data['over45years1stdose']) },
+						{ name: 'Over 60 Years', value: parseInt(data['over60years1stdose']) },
 					]
 				},
 				'second_doses': {
-					'total': response.tested[response.tested.length - 1]['seconddoseadministered'],
+					'total': data['seconddoseadministered'],
 					'stats': [
-						{ name: 'Frontline Workers', value: parseInt(response.tested[response.tested.length - 1]['frontlineworkersvaccinated2nddose']) },
-						{ name: 'Healthcare Workers', value: parseInt(response.tested[response.tested.length - 1]['healthcareworkersvaccinated2nddose']) },
-						{ name: 'Under 45 Years', value: parseInt(response.tested[response.tested.length - 1]['years2nddose']) },
-						{ name: 'Over 45 Years', value: parseInt(response.tested[response.tested.length - 1]['over45years2nddose']) },
-						{ name: 'Over 60 Years', value: parseInt(response.tested[response.tested.length - 1]['over60years2nddose']) },
+						{ name: 'Frontline Workers', value: parseInt(data['frontlineworkersvaccinated2nddose']) },
+						{ name: 'Healthcare Workers', value: parseInt(data['healthcareworkersvaccinated2nddose']) },
+						{ name: 'Under 45 Years', value: parseInt(data['years2nddose']) },
+						{ name: 'Over 45 Years', value: parseInt(data['over45years2nddose']) },
+						{ name: 'Over 60 Years', value: parseInt(data['over60years2nddose']) },
 					]
 				},
 				'registrations': {
-					'total': response.tested[response.tested.length - 1]['totalindividualsregistered'],
+					'total': data['totalindividualsregistered'],
 					'stats': [
-						{ name: '18-45 Years', value: parseInt(response.tested[response.tested.length - 1]['registration18-45years']) },
-						{ name: 'Above 45 Years', value: parseInt(response.tested[response.tested.length - 1]['registrationabove45years']) },
+						{ name: '18-45 Years', value: parseInt(data['registration18-45years']) },
+						{ name: 'Above 45 Years', value: parseInt(data['registrationabove45years']) },
 					]
 				}
 			}
