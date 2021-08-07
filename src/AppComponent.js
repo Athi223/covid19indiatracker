@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom"
+import { HashRouter as Router, Switch, Route, NavLink } from "react-router-dom"
 import Home from './Home/Home'
 import StateWise from './StateWise/StateWise'
 import DistrictWise from './DistrictWise/DistrictWise'
