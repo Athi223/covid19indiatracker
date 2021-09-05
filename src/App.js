@@ -15,7 +15,7 @@ export default function App() {
 	const [ districts, setDistricts ] = useState({})
 	const [ world, SetWorld ] = useState([])
 	useEffect(() => {
-		fetch('https://api.covid19india.org/data.json')
+		fetch('https://data.covid19india.org/data.json')
 		.then(rawResponse => rawResponse.json())
 		.then(response => {
 			let confirmed = [], active = [], deceased = [], recovered = []
@@ -30,7 +30,7 @@ export default function App() {
 			})
 			response.tested.reverse()												// reverse the vaccinations data to get latest first
 			const data = response.tested.find(e => 
-				parseInt(e['totalindividualsvaccinated']) &&
+				parseInt(e['totaldosesadministered']) &&
 				parseInt(e['firstdoseadministered']) &&
 				parseInt(e['frontlineworkersvaccinated1stdose']) &&
 				parseInt(e['healthcareworkersvaccinated1stdose']) &&
@@ -48,7 +48,7 @@ export default function App() {
 				parseInt(e['registrationabove45years'])
 			)
 			const _vaccinations = {
-				'total': data['totalindividualsvaccinated'],
+				'total': data['totaldosesadministered'],
 				'first_doses': {
 					'total': data['firstdoseadministered'],
 					'stats': [
@@ -96,7 +96,7 @@ export default function App() {
 				SetWorld(world)
 			})
 		})
-		fetch("https://api.covid19india.org/v4/min/data.min.json")
+		fetch("https://data.covid19india.org/v4/min/data.min.json")
 		.then(rawResponse => rawResponse.json())
 		.then(response => {
 			let states = [[], [], [], [], [], [], []], districts = {}
