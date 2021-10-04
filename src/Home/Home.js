@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './Home.css'
 import { ResponsiveContainer, Tooltip, PolarGrid, PolarAngleAxis, RadarChart, PolarRadiusAxis, Radar, Legend } from 'recharts';
 import Graph from './Graph';
+import { scalePow } from 'd3-scale';
 
 export default function Home(props) {
 	React.useEffect(() => {
@@ -85,7 +86,7 @@ export default function Home(props) {
 							<RadarChart data={props.world} startAngle={35} endAngle={-325}>
 								<PolarGrid />
 								<PolarAngleAxis dataKey="type"/>
-								<PolarRadiusAxis scale="sqrt" />
+								<PolarRadiusAxis scale={scalePow().exponent(0.2)} />
 								<Radar dataKey="World" stroke="purple" fill="#8884d8" fillOpacity={0.6} />
 								<Radar dataKey="India" stroke="orange" fill="gold" fillOpacity={0.6} />
 								<Tooltip />

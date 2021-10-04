@@ -77,21 +77,23 @@ export default function App() {
 					]
 				}
 			}
+			const tested = response.tested.find(e => parseInt(e['totalsamplestested']))['totalsamplestested']
 			setVaccinations(_vaccinations)
 			setConfirmed(confirmed)
 			setActive(active)
 			setDeceased(deceased)
 			setRecovered(recovered)
-			setTested(new Intl.NumberFormat('en-IN').format(response.tested[response.tested.length-1].totalsamplestested))
+			setTested(new Intl.NumberFormat('en-IN').format(tested))
 			setReady(prev => prev + 1)
-			fetch('https://api.covid19api.com/world/total')
+			fetch('https://corona.lmao.ninja/v2/all')
 			.then(rawResponse => rawResponse.json())
 			.then(response => {
 				const world = [
-					{ type: 'Confirmed', India: parseInt(confirmed[confirmed.length-1].confirmed), World: response.TotalConfirmed },
-					{ type: 'Active', India: parseInt(active[active.length-1].active), World: (response.TotalConfirmed - response.TotalDeaths - response.TotalRecovered) },
-					{ type: 'Recovered', India: parseInt(recovered[recovered.length-1].recovered), World: response.TotalRecovered },
-					{ type: 'Deceased', India: parseInt(deceased[deceased.length-1].deceased), World: response.TotalDeaths },
+					{ type: 'Confirmed', India: parseInt(confirmed[confirmed.length-1].confirmed), World: response.cases },
+					{ type: 'Active', India: parseInt(active[active.length-1].active), World: response.active },
+					{ type: 'Recovered', India: parseInt(recovered[recovered.length-1].recovered), World: response.recovered },
+					{ type: 'Tested', India: parseInt(tested), World: response.tests },
+					{ type: 'Deceased', India: parseInt(deceased[deceased.length-1].deceased), World: response.deaths },
 				]
 				SetWorld(world)
 			})
