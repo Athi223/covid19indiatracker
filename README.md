@@ -4,7 +4,7 @@ Project is live at <a href="https://athi223.github.io/covid19indiatracker/">Covi
 
 ## Dashboard
 
-![Dashboard](https://i.ibb.co/zQmCWSH/dashboard.png)
+![Dashboard](https://i.ibb.co/w74JRRp/dashboard.png)
 
 ## StateWise
 
@@ -20,8 +20,10 @@ Project is live at <a href="https://athi223.github.io/covid19indiatracker/">Covi
 
 ### Credits (API)
 
-<a href="https://api.covid19india.org/">Covid-19 India API</a>
-<a href="https://covid19api.com">Covid-19 API</a>
+<ul>
+    <li>India Data: <a href="https://api.covid19india.org/">Covid-19 India API</a></li>
+    <li>Worldwide Data: <a href="https://corona.lmao.ninja/v2/all">Novel Covid API</a></li>
+</ul>
 
 ### Current Visualizations
 
