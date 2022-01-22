@@ -1,7 +1,7 @@
 import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip } from 'recharts';
 
 export default function PieGraph(props) {
-	const colors = [ '#dc3545', '#6610f2', '#007bff', '#28a745', '#fd7e14' ]
+	const colors = [ '#dc3545', '#6610f2', '#28a745' ]
 	const renderLabel = function(entry) {
 		return entry.name + " (" + new Intl.NumberFormat('en-IN').format(entry.value) + ")"
 	}
