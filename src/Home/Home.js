@@ -44,7 +44,7 @@ export default function Home(props) {
 				<div className="col-12 col-md-6 col-lg-4 col-xl-2">
 					<div className="mx-2 my-4 cases-types h4 p-4 d-flex flex-column justify-content-around" style ={{ backgroundColor: '#6610f2' }}>
 						<span>Tested</span>
-						<span>{props.tested}</span>
+						<span>{new Intl.NumberFormat('en-IN').format(props.tested[props.tested.length-1].tested)}</span>
 					</div>
 				</div>
 			</div>
