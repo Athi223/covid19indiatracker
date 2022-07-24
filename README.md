@@ -22,7 +22,7 @@ Project is live at <a href="https://athi223.github.io/covid19indiatracker/">Covi
 
 <ul>
     <li>India Data: <a href="https://data.covid19bharat.org">Covid-19 India API</a></li>
-    <li>Worldwide Data: <a href="https://corona.lmao.ninja/v2/all">Novel Covid API</a></li>
+    <li>Worldwide Data: <a href="https://disease.sh">Disease.sh API</a></li>
 </ul>
 
 ### Current Visualizations

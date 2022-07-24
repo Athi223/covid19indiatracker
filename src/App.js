@@ -45,7 +45,7 @@ export default function App() {
 			setDeceased(deceased)
 			setRecovered(recovered)
 			setTested(tested)
-			fetch('https://corona.lmao.ninja/v2/all')
+			fetch('https://disease.sh/v3/covid-19/all')
 			.then(rawResponse => rawResponse.json())
 			.then(response => {
 				const world = [
